@@ -1,0 +1,102 @@
+body {
+    font-family: 'Courier New', Courier, monospace; /* Police de style terminal */
+    background-color: #1e1e1e; /* Couleur de fond sombre */
+    color: #00ff00; /* Texte vert fluo */
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #00ff00; /* Titre vert fluo */
+    text-shadow: 1px 1px 2px black; /* Ombre pour le titre */
+}
+
+form {
+    background: #2b2b2b; /* Fond sombre pour le formulaire */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+     margin-top: 40px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #00ff00; /* Texte vert fluo */
+}
+
+input[type="text"] {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #00ff00; /* Bordure verte fluo */
+    border-radius: 5px;
+    background-color: #1e1e1e; /* Fond sombre pour les champs de texte */
+    color: #00ff00; /* Texte vert fluo */
+}
+
+button {
+    background-color: #00ff00; /* Bouton vert fluo */
+    color: black; /* Texte noir sur le bouton */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #00cc00; /* Couleur du bouton au survol */
+}
+
+#presentationBox {
+    background: #2b2b2b; /* Fond sombre pour la présentation */
+    padding: 20px; /* Espacement interne */
+    border-radius: 5px; /* Coins arrondis */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Ombre */
+    margin-top: 20px; /* Ajouté pour l'espacement */
+    clear: both; /* Pour éviter le chevauchement */
+    color: #00ff00; /* Texte vert fluo */
+}
+
+#presentationBox h2 {
+    color: #00ff00; /* Couleur du titre en vert fluo */
+}
+
+#presentationBox p {
+    color: #00ff00; /* Couleur du texte en vert fluo */
+}
+
+#progressContainer {
+    width: 100%;
+    background: #2b2b2b; /* Fond sombre pour la barre de progression */
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+#progressBar {
+    width: 0%;
+    height: 20px;
+    background: #00ff00; /* Barre de progression verte fluo */
+}
+
+#lastCommandContainer {
+    background: #2b2b2b; /* Fond sombre pour la section des dernières commandes */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    margin-top: 20px;
+}
+
+#results {
+    background: #2b2b2b; /* Fond sombre pour les résultats */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    margin-top: 20px; /* Ajouté pour l'espacement */
+    clear: both; /* Pour éviter le chevauchement */
+    color: #00ff00; /* Texte vert fluo */
+}
+

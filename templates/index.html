@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scanner de Domaine</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <h1>Scanner de Domaine</h1>
+
+    <!-- Presentation Box -->
+    <div id="presentationBox">
+        <h2>Présentation de l'outil</h2>
+        <p>
+            Cet outil de scan de domaine vous permet de rechercher des sous-domaines, d'analyser leur état d'activité et de vérifier la présence de mots spécifiques dans les ressources des sites.
+            Il utilise des outils comme <strong>Subfinder</strong>, <strong>Assetfinder</strong>, <strong>HTTPX</strong>, et <strong>Katana</strong> pour effectuer des analyses approfondies.
+        </p>
+        <p>
+            Entrez simplement le domaine que vous souhaitez analyser, le mot que vous souhaitez rechercher, et spécifiez un répertoire de sauvegarde pour les résultats.
+            Cliquez sur le bouton "Lancer le scan" pour commencer votre analyse.
+        </p>
+    </div>
+
+    <form id="scanForm">
+        <label for="domain">Domaine à énumérer :</label>
+        <input type="text" id="domain" name="domain" required>
+
+        <label for="word">Mot à rechercher :</label>
+        <input type="text" id="word" name="word" required>
+
+        <label for="outputDir">Répertoire de sauvegarde :</label>
+        <input type="text" id="outputDir" name="outputDir" required>
+
+        <button type="submit">Lancer le scan</button>
+    </form>
+
+    <div id="loadingMessage" style="text-align: center; color: #00ff00;"></div>
+    <div id="progressContainer">
+    <div id="progressBar"></div>
+    </div>
+
+    <div id="lastCommandContainer">
+        <h3>Dernière commande exécutée :</h3>
+        <p id="lastCommand"></p>
+    </div>
+
+    <div id="results">
+        <h2>Résultats :</h2>
+        <pre id="output"></pre>
+    </div>
+</body>
+</html>
