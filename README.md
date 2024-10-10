@@ -43,9 +43,10 @@ sudo python3 app.py
 3. On the webpage, you can enter the following information:
 
     . Domain: The domain to scan.
+   
     . Output Directory: Directory to save the results.
 
-4. Click "Start Scan" and the scan will be launched. The progress bar will display the scan's progress, and the last executed command will be shown at the bottom of the page.
+5. Click "Start Scan" and the scan will be launched. The progress bar will display the scan's progress, and the last executed command will be shown at the bottom of the page.
 
 
 ## Code Structure
