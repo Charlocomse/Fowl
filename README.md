@@ -1,5 +1,7 @@
 ![alt text](https://github.com/Charlocomse/Fowl/blob/main/static/logo.png?raw=true)
 
+DISCLAIMER: this tool is intended for educational purposes and awareness training sessions only. Performing hacking attempts on servers that you do not own (without permission) is illegal! 
+Do not attempt to use this tool against domain you don't own!
 
 # Flask Scanning Tool
 
