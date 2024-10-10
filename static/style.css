@@ -17,7 +17,7 @@ form {
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     margin-bottom: 20px;
-     margin-top: 40px;
+    margin-top: 40px;
 }
 
 label {
@@ -84,7 +84,7 @@ button:hover {
 
 #lastCommandContainer {
     background: #2b2b2b; /* Fond sombre pour la section des dernières commandes */
-    padding: 10px;
+    padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     margin-top: 20px;

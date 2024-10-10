@@ -31,14 +31,13 @@ This project is a Flask web application that allows users to run a scan script w
 
 1. Run the Flask application:
 
-python app.py
+sudo python3 app.py
 
 2. The application will start at http://127.0.0.1:5000/ and will automatically open in Google Chrome.
 
 3. On the webpage, you can enter the following information:
 
     . Domain: The domain to scan.
-    . Word: The keyword for scanning.
     . Output Directory: Directory to save the results.
 
 4. Click "Start Scan" and the scan will be launched. The progress bar will display the scan's progress, and the last executed command will be shown at the bottom of the page.

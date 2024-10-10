@@ -3,12 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scanner de Domaine</title>
+    <title>FOWL</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <style>
+        .centered-image {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 50%;
+            height: auto;
+        }
+    </style>
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
 </head>
+    <h1>
+        <img src="{{ url_for('static', filename='/logo.png') }}" alt="Logo FOWL" class="centered-image">
+
+    </h1>
 <body>
-    <h1>Scanner de Domaine</h1>
+    <h1 style="text-align: center;">Fowl</h1>
 
     <!-- Presentation Box -->
     <div id="presentationBox">
@@ -18,19 +31,17 @@
             Il utilise des outils comme <strong>Subfinder</strong>, <strong>Assetfinder</strong>, <strong>HTTPX</strong>, et <strong>Katana</strong> pour effectuer des analyses approfondies.
         </p>
         <p>
-            Entrez simplement le domaine que vous souhaitez analyser, le mot que vous souhaitez rechercher, et spécifiez un répertoire de sauvegarde pour les résultats.
+            Entrez simplement le domaine que vous souhaitez analyser, et spécifiez un répertoire de sauvegarde pour les résultats.
             Cliquez sur le bouton "Lancer le scan" pour commencer votre analyse.
         </p>
     </div>
 
     <form id="scanForm">
-        <label for="domain">Domaine à énumérer :</label>
+        <label for="domain">Domaine cible :</label>
         <input type="text" id="domain" name="domain" required>
 
-        <label for="word">Mot à rechercher :</label>
-        <input type="text" id="word" name="word" required>
 
-        <label for="outputDir">Répertoire de sauvegarde :</label>
+        <label for="outputDir">Répertoire de sauvegarde local :</label>
         <input type="text" id="outputDir" name="outputDir" required>
 
         <button type="submit">Lancer le scan</button>
@@ -42,12 +53,12 @@
     </div>
 
     <div id="lastCommandContainer">
-        <h3>Dernière commande exécutée :</h3>
+        <h3>  Commande complète :</h3>
         <p id="lastCommand"></p>
     </div>
 
     <div id="results">
-        <h2>Résultats :</h2>
+        <h2>Output :</h2>
         <pre id="output"></pre>
     </div>
 </body>

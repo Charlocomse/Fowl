@@ -1,63 +1,51 @@
 #!/bin/bash
 
-# Fonction pour vérifier si un outil est déjà installé
-check_tool() {
-    command -v "$1" &> /dev/null
-}
+echo "Installation des outils nécessaires..."
 
-# Installer les outils requis
-install_tools() {
-    echo "Installation des outils requis..."
+# Mettre à jour le système
+sudo apt update && sudo apt upgrade -y
 
-    # Liste des outils à installer
-    tools=(subfinder assetfinder httpx katana curl)
+# Installer les dépendances nécessaires
+sudo apt install -y git curl
 
-    for tool in "${tools[@]}"; do
-        if check_tool "$tool"; then
-            echo "$tool est déjà installé."
-        else
-            echo "Installation de $tool..."
-            case "$tool" in
-                subfinder)
-                    go install github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
-                    ;;
-                assetfinder)
-                    go install github.com/tomnomnom/assetfinder@latest
-                    ;;
-                httpx)
-                    go install github.com/projectdiscovery/httpx/cmd/httpx@latest
-                    ;;
-                katana)
-                    go install github.com/projectdiscovery/katana@latest
-                    ;;
-                curl)
-                    sudo apt-get install -y curl  # Remplacez par `dnf` pour CentOS
-                    ;;
-                *)
-                    echo "Erreur: Outil inconnu: $tool"
-                    ;;
-            esac
-        fi
-    done
-
-    echo "Tous les outils requis ont été installés."
-}
-
-# Installation des outils selon la distribution
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    # Pour Debian/Ubuntu
-    if [ -f /etc/debian_version ]; then
-        sudo apt-get update
-        install_tools
-    # Pour Red Hat/CentOS
-    elif [ -f /etc/redhat-release ]; then
-        sudo dnf install -y golang curl  # Installer Go et curl
-        install_tools
-    else
-        echo "Erreur: Distribution Linux non prise en charge."
-        exit 1
-    fi
-else
-    echo "Erreur: Ce script ne fonctionne que sur les systèmes Linux."
-    exit 1
+# Installer subfinder
+if ! command -v subfinder &> /dev/null; then
+    echo "Installation de Subfinder..."
+    go install github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
 fi
+
+# Installer assetfinder
+if ! command -v assetfinder &> /dev/null; then
+    echo "Installation de Assetfinder..."
+    go install github.com/tomnomnom/assetfinder@latest
+fi
+
+# Installer httpx
+if ! command -v httpx &> /dev/null; then
+    echo "Installation de Httpx..."
+    go install github.com/projectdiscovery/httpx/cmd/httpx@latest
+fi
+
+# Installer katana
+if ! command -v katana &> /dev/null; then
+    echo "Installation de Katana..."
+    go install github.com/inafsek/katana@latest
+fi
+
+# Installer gospider
+if ! command -v gospider &> /dev/null; then
+    echo "Installation de Gospider..."
+    go install github.com/jaeles-project/gospider@latest
+fi
+
+# Installer Go si nécessaire
+if ! command -v go &> /dev/null; then
+    echo "Installation de Go..."
+    wget https://golang.org/dl/go1.20.3.linux-amd64.tar.gz
+    sudo tar -C /usr/local -xzf go1.20.3.linux-amd64.tar.gz
+    echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.bashrc
+    source ~/.bashrc
+fi
+
+echo "Installation terminée. Tous les outils sont maintenant disponibles."
+

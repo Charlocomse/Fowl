@@ -2,17 +2,17 @@ document.getElementById('scanForm').addEventListener('submit', function(event) {
     event.preventDefault();
     
     const domain = document.getElementById('domain').value;
-    const word = document.getElementById('word').value;
     const outputDir = document.getElementById('outputDir').value;
 
     // Démarrer le scan
-    fetch(`/scan?domain=${domain}&word=${word}&outputDir=${outputDir}`)
+    fetch(`/scan?domain=${domain}&outputDir=${outputDir}`)
         .then(response => response.json())
         .then(data => {
             console.log(data); // Ajoutez cette ligne pour déboguer
             document.getElementById('output').innerText = data.message;
             startLoading();  // Démarre la barre de chargement
             checkLastCommand(); // Vérifier les dernières commandes
+            checkScanResult(); // Vérifier les résultats du scan
         })
         .catch(error => {
             console.error('Erreur:', error);
@@ -40,7 +40,6 @@ function startLoading() {
     }, 20); // Mise à jour toutes les 20ms pour un mouvement plus fluide
 }
 
-
 // Fonction pour vérifier la dernière commande
 function checkLastCommand() {
     fetch('/last_command')
@@ -62,5 +61,28 @@ function checkLastCommand() {
         .catch(error => {
             console.error('Erreur lors de la récupération de la dernière commande:', error);
         });
+}
+
+// Fonction pour vérifier les résultats du scan
+function checkScanResult() {
+    const interval = setInterval(() => {
+        fetch('/scan_result')
+            .then(response => response.json())
+            .then(data => {
+                const scanOutput = data.scan_output;
+                const outputElement = document.getElementById('output'); // Assurez-vous que cet élément existe
+                if (outputElement) {
+                    outputElement.innerText = scanOutput || "Scan en cours..."; // Affichez les résultats ou un message par défaut
+                }
+
+                // Vérifiez si le scan est terminé (vous devrez définir un critère pour cela)
+                if (scanOutput) {
+                    clearInterval(interval); // Arrêter l'intervalle une fois que nous avons des résultats
+                }
+            })
+            .catch(error => {
+                console.error('Erreur lors de la récupération des résultats du scan:', error);
+            });
+    }, 2000); // Vérifie toutes les 2 secondes
 }
 
