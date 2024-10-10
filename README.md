@@ -1,3 +1,6 @@
+![alt text](https://github.com/Charlocomse/Fowl/blob/main/static/logo.png?raw=true)
+
+
 # Flask Scanning Tool
 
 This project is a Flask web application that allows users to run a scan script with custom inputs such as domain, word, and output directory. The results are shown on the page, and Google Chrome is launched automatically to open the application. The tool is designed to be run both on Linux and Windows environments.
