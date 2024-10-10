@@ -5,7 +5,7 @@ Do not attempt to use this tool against domain you don't own!
 
 # Flask Scanning Tool
 
-This project is a Flask web application that allows users to run a scan script with custom inputs such as domain, and output directory. The results are shown on the page, and Google Chrome is launched automatically to open the application. The tool is designed to be run both on Linux and Windows environments.
+This project is a Flask web application that allows users to run a scan script with custom inputs such as domain, and output directory. The results are shown on the page, and Google Chrome is launched automatically to open the application. The tool is designed to be run on Linux environment.
 
 ## Features
 
