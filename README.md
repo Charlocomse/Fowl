@@ -78,6 +78,8 @@ Let me know if you'd like to adjust or add any sections!
 
 ### If you like my work 
 ![alt text](https://github.com/Charlocomse/Fowl/blob/main/static/coffee.png?raw=true)
+
+
 Support me and offer me my next coffee at buymeacoffee.com/charlocomse ! 
 Thanks !
 
