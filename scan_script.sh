@@ -183,7 +183,7 @@ count_sensitive_occurrences() {
             fi
 
             # Recherche des occurrences avec grep
-            occurrences=$(echo "$response" | grep -o -E "$regex")
+            occurrences=$(echo "$response" | grep -aoP "$regex")
 
             if [[ -n "$occurrences" ]]; then
                 echo "$url" >> "$occurrences_file"  # Ajouter l'URL au fichier d'occurrences
@@ -197,7 +197,35 @@ count_sensitive_occurrences() {
 echo "Les URLs contenant des informations sensibles ont été enregistrées dans $occurrences_file."
 echo "Informations sensibles : $(wc -l < "$occurrences_file") URLs trouvées avec des informations sensibles."
 
+# Recherche des endpoints depuis les fichiers .js
+echo ""
+echo "----Recherche de ENDPOINT API----"
+echo ""
 
+
+# Fichier contenant la liste d'URLs (une URL par ligne)
+url_list="$output_dir/combined_js.txt"
+
+# Fichier de sortie
+output_file="$output_dir/api_endpoint_unsorted.txt"
+final_file="$output_dir/api_endpoint.txt"
+# Vider le fichier de sortie avant de commencer
+> "$output_file"
+
+# Boucle à travers chaque URL dans le fichier
+while IFS= read -r url; do
+    
+    # Télécharge le fichier JavaScript
+    curl -s "$url" -o file.js
+
+    # Exécute la commande grep et ajoute les résultats au fichier de sortie
+    cat file.js | grep -aoP "(?<=(\"|\'|\`))\/[a-zA-Z0-9_?&=\/\-\#\.]*(?=(\"|\'|\`))" | sort -u >> "$output_file"
+	
+done < "$url_list"
+sort -u "$output_file" > "$final_file"
+rm file.js
+# Affiche le contenu du fichier api_endpoint.txt
+echo "Résultats enregistrés dans $final_file"
 
 echo "$(date): Scan terminé pour le domaine $domain" >> "$log_file"
 }
